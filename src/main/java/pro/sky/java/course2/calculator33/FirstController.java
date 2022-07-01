@@ -11,29 +11,36 @@ import org.springframework.web.bind.annotation.RestController;
 public class FirstController {
 
 
+
+
     @GetMapping
     public String sayWelcome (){
         return "<b>Добро пожаловать в калькулятор</b>";
     }
 
+
     @GetMapping (path = "/plus")
-    public String plus(@RequestParam int num1, @RequestParam int num2 ) {
-        return CalculatorService.sum(num1,num2);
+    public String plus(@RequestParam (value = "num1",required = false) Integer a,
+                       @RequestParam(value = "num2", required = false ) Integer b) {
+        return CalculatorService.sum(a,b);
     }
 
     @GetMapping (path = "/minus")
-    public String minus (@RequestParam int num1,@RequestParam int num2) {
-        return CalculatorService.minus(num1,num2);
+   public String minus (@RequestParam (value = "num1",required = false) Integer a,
+                        @RequestParam(value = "num2", required = false ) Integer b) {
+        return CalculatorService.minus(a,b);
     }
 
     @GetMapping(path = "/multiply")
-    public String multiply (@RequestParam int num1,@RequestParam int num2) {
-        return  CalculatorService.multiply(num1,num2);
+    public String multiply (@RequestParam (value = "num1",required = false) Integer a,
+                            @RequestParam(value = "num2", required = false ) Integer b) {
+        return  CalculatorService.multiply(a,b);
     }
 
     @GetMapping (path = "/divide")
-    public String divide (@RequestParam int num1,@RequestParam int num2) {
-        return CalculatorService.divide(num1,num2);
+    public String divide (@RequestParam (value = "num1",required = false) Integer a,
+                          @RequestParam(value = "num2", required = false ) Integer b) {
+        return CalculatorService.divide(a,b);
     }
 
 }
